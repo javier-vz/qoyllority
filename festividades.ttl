@@ -18,6 +18,25 @@
            rdfs:range :Evento .
 
 
+###  http://example.org/festividades#ejecutadaPor
+:ejecutadaPor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Danza ;
+              rdfs:range :Comunidad .
+
+
+###  http://example.org/festividades#formaParteDe
+:formaParteDe rdf:type owl:ObjectProperty ;
+              rdfs:domain :Danza ;
+              rdfs:range :Festividad .
+
+
+###  http://example.org/festividades#interpreta
+:interpreta rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :IndividuoDeDanza ;
+            rdfs:range :Danza .
+
+
 ###  http://example.org/festividades#narradoPor
 :narradoPor rdf:type owl:ObjectProperty ;
             rdfs:domain :Evento ;
@@ -50,8 +69,16 @@
 
 ###  http://example.org/festividades#representa
 :representa rdf:type owl:ObjectProperty ;
-            rdfs:domain :PersonajeRitual ;
-            rdfs:range :Festividad .
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :EntidadVenerada ;
+            rdfs:range :EntidadVenerada .
+
+
+###  http://example.org/festividades#sePresentaEn
+:sePresentaEn rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :formaParteDe ;
+              rdfs:domain :Danza ;
+              rdfs:range :Evento .
 
 
 ###  http://example.org/festividades#usa
@@ -73,13 +100,12 @@
 :Danza rdf:type owl:Class .
 
 
-###  http://example.org/festividades#DanzaUkumari
-:DanzaUkumari rdf:type owl:Class ;
-              rdfs:subClassOf :Danza .
-
-
 ###  http://example.org/festividades#Documento
 :Documento rdf:type owl:Class .
+
+
+###  http://example.org/festividades#EntidadVenerada
+:EntidadVenerada rdf:type owl:Class .
 
 
 ###  http://example.org/festividades#Evento
@@ -89,6 +115,10 @@
 
 ###  http://example.org/festividades#Festividad
 :Festividad rdf:type owl:Class .
+
+
+###  http://example.org/festividades#IndividuoDeDanza
+:IndividuoDeDanza rdf:type owl:Class .
 
 
 ###  http://example.org/festividades#LugarSagrado
