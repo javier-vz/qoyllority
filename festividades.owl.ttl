@@ -1,0 +1,100 @@
+# Ontología de festividades religiosas andinas en formato Turtle (TTL)
+# Este archivo define clases, propiedades y ejemplos para modelar personajes, danzas, eventos y lugares sagrados
+
+# Prefijos que definen los espacios de nombres utilizados en la ontología
+# ':' se refiere al espacio de nombres local de esta ontología (festividades)
+# 'rdf' (Resource Description Framework) define la base para describir recursos en la Web Semántica
+# 'rdfs' (RDF Schema) permite describir jerarquías de clases y propiedades
+# 'owl' (Web Ontology Language) permite definir ontologías formales, clases, propiedades y restricciones
+# 'xsd' (XML Schema Definition) define tipos de datos como strings, fechas, números, etc.
+@prefix : <http://example.org/festividades#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Esta línea declara formalmente que este documento representa una ontología OWL
+<http://example.org/festividades> rdf:type owl:Ontology .
+
+### CLASES PRINCIPALES
+# Definimos las entidades fundamentales: festividades, personajes rituales, danzas, eventos, etc.
+# Por ejemplo, `:Festividad rdf:type owl:Class ;
+    rdfs:comment "Celebración religiosa andina que implica ritualidad, danza, peregrinación y comunidad." .` significa que `:Festividad` es una clase.
+# `rdf:type` es el predicado que indica que el sujeto es de cierto tipo.
+# En este caso, ese tipo es `owl:Class`, lo que lo declara como una clase ontológica.
+
+:Festividad rdf:type owl:Class .
+:PersonajeRitual rdf:type owl:Class ;
+    rdfs:comment "Figura simbólica que participa en la festividad, representando papeles rituales específicos." .
+:Danza rdf:type owl:Class .
+:Evento rdf:type owl:Class ;
+    rdfs:comment "Actividad programada dentro de la festividad, como procesiones o entradas de danzas." .
+:LugarSagrado rdf:type owl:Class ;
+    rdfs:comment "Ubicación geográfica o simbólica de importancia espiritual para la festividad." .
+:Comunidad rdf:type owl:Class ;
+    rdfs:comment "Grupo social o étnico que participa o está vinculado con la festividad." .
+:ObjetoRitual rdf:type owl:Class .
+:Documento rdf:type owl:Class .
+
+### RELACIONES (PROPIEDADES)
+# Estas propiedades conectan las clases. Se define dominio (quién inicia la relación) y rango (a quién se dirige)
+# La sintaxis `:propiedad rdf:type owl:ObjectProperty ; rdfs:domain :ClaseOrigen ; rdfs:range :ClaseDestino .`
+# indica que se declara una propiedad que conecta instancias de dos clases
+
+:participaEn rdf:type owl:ObjectProperty ;
+    rdfs:domain :PersonajeRitual ;
+    rdfs:range :Evento .
+
+:realizaDanza rdf:type owl:ObjectProperty ;
+    rdfs:domain :PersonajeRitual ;
+    rdfs:range :Danza .
+
+:ocurreEn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Evento ;
+    rdfs:range :LugarSagrado .
+
+:representa rdf:type owl:ObjectProperty ;
+    rdfs:domain :PersonajeRitual ;
+    rdfs:range :Festividad .
+
+:perteneceA rdf:type owl:ObjectProperty ;
+    rdfs:domain :PersonajeRitual ;
+    rdfs:range :Comunidad .
+
+:usa rdf:type owl:ObjectProperty ;
+    rdfs:domain :PersonajeRitual ;
+    rdfs:range :ObjetoRitual .
+
+:documenta rdf:type owl:ObjectProperty ;
+    rdfs:domain :Documento ;
+    rdfs:range :Evento .
+
+:narradoPor rdf:type owl:ObjectProperty ;
+    rdfs:domain :Evento ;
+    rdfs:range :Comunidad .
+
+### EJEMPLOS DE INDIVIDUOS
+# Se instancian clases con ejemplos concretos del contexto del Qoyllur Rit’i
+# La sintaxis `:individuo rdf:type :Clase .` crea una instancia de una clase determinada
+
+:QoyllurRiti rdf:type :Festividad ;
+    rdfs:label "Señor de Qoyllur Rit’i" .
+
+:QhapaqQolla rdf:type :PersonajeRitual ;
+    rdfs:label "Qhapaq Qolla" ;
+    :participaEn :EntradaDeNaciones ;
+    :realizaDanza :DanzaQolla ;
+    :perteneceA :ComunidadQolla .
+
+:EntradaDeNaciones rdf:type :Evento ;
+    rdfs:label "Entrada de las Naciones" ;
+    :ocurreEn :SantuarioSinakara .
+
+:DanzaQolla rdf:type :Danza ;
+    rdfs:label "Danza de los Qollas" .
+
+:ComunidadQolla rdf:type :Comunidad ;
+    rdfs:label "Comunidad Qolla" .
+
+:SantuarioSinakara rdf:type :LugarSagrado ;
+    rdfs:label "Santuario de Sinakara" .
