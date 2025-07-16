@@ -1,0 +1,163 @@
+@prefix : <http://example.org/festividades#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/festividades#> .
+
+<http://example.org/festividades> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/festividades#documenta
+:documenta rdf:type owl:ObjectProperty ;
+           rdfs:domain :Documento ;
+           rdfs:range :Evento .
+
+
+###  http://example.org/festividades#narradoPor
+:narradoPor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Evento ;
+            rdfs:range :Comunidad .
+
+
+###  http://example.org/festividades#ocurreEn
+:ocurreEn rdf:type owl:ObjectProperty ;
+          rdfs:domain :Evento ;
+          rdfs:range :LugarSagrado .
+
+
+###  http://example.org/festividades#participaEn
+:participaEn rdf:type owl:ObjectProperty ;
+             rdfs:domain :PersonajeRitual ;
+             rdfs:range :Evento .
+
+
+###  http://example.org/festividades#perteneceA
+:perteneceA rdf:type owl:ObjectProperty ;
+            rdfs:domain :PersonajeRitual ;
+            rdfs:range :Comunidad .
+
+
+###  http://example.org/festividades#realizaDanza
+:realizaDanza rdf:type owl:ObjectProperty ;
+              rdfs:domain :PersonajeRitual ;
+              rdfs:range :Danza .
+
+
+###  http://example.org/festividades#representa
+:representa rdf:type owl:ObjectProperty ;
+            rdfs:domain :PersonajeRitual ;
+            rdfs:range :Festividad .
+
+
+###  http://example.org/festividades#usa
+:usa rdf:type owl:ObjectProperty ;
+     rdfs:domain :PersonajeRitual ;
+     rdfs:range :ObjetoRitual .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/festividades#Comunidad
+:Comunidad rdf:type owl:Class ;
+           rdfs:comment "Grupo social o étnico que participa o está vinculado con la festividad." .
+
+
+###  http://example.org/festividades#Danza
+:Danza rdf:type owl:Class .
+
+
+###  http://example.org/festividades#DanzaUkumari
+:DanzaUkumari rdf:type owl:Class ;
+              rdfs:subClassOf :Danza .
+
+
+###  http://example.org/festividades#Documento
+:Documento rdf:type owl:Class .
+
+
+###  http://example.org/festividades#Evento
+:Evento rdf:type owl:Class ;
+        rdfs:comment "Actividad programada dentro de la festividad, como procesiones o entradas de danzas." .
+
+
+###  http://example.org/festividades#Festividad
+:Festividad rdf:type owl:Class .
+
+
+###  http://example.org/festividades#LugarSagrado
+:LugarSagrado rdf:type owl:Class ;
+              rdfs:comment "Ubicación geográfica o simbólica de importancia espiritual para la festividad." .
+
+
+###  http://example.org/festividades#ObjetoRitual
+:ObjetoRitual rdf:type owl:Class .
+
+
+###  http://example.org/festividades#PersonajeRitual
+:PersonajeRitual rdf:type owl:Class ;
+                 rdfs:comment "Figura simbólica que participa en la festividad, representando papeles rituales específicos." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/festividades#ComunidadQolla
+:ComunidadQolla rdf:type owl:NamedIndividual ,
+                         :Comunidad ;
+                rdfs:label "Comunidad Qolla" .
+
+
+###  http://example.org/festividades#DanzaQolla
+:DanzaQolla rdf:type owl:NamedIndividual ,
+                     :Danza ;
+            :realizaDanza :DanzaUkumari ;
+            rdfs:label "Danza de los Qollas" .
+
+
+###  http://example.org/festividades#DanzaUkumari
+:DanzaUkumari rdf:type owl:NamedIndividual ,
+                       :Danza .
+
+
+###  http://example.org/festividades#EntradaDeNaciones
+:EntradaDeNaciones rdf:type owl:NamedIndividual ,
+                            :Evento ;
+                   :ocurreEn :SantuarioSinakara ;
+                   rdfs:label "Entrada de las Naciones" .
+
+
+###  http://example.org/festividades#QhapaqQolla
+:QhapaqQolla rdf:type owl:NamedIndividual ,
+                      :PersonajeRitual ;
+             :participaEn :EntradaDeNaciones ;
+             :perteneceA :ComunidadQolla ;
+             :realizaDanza :DanzaQolla ;
+             rdfs:label "Qhapaq Qolla" .
+
+
+###  http://example.org/festividades#QoyllurRiti
+:QoyllurRiti rdf:type owl:NamedIndividual ,
+                      :Festividad ;
+             rdfs:label "Señor de Qoyllur Rit’i" .
+
+
+###  http://example.org/festividades#SantuarioSinakara
+:SantuarioSinakara rdf:type owl:NamedIndividual ,
+                            :LugarSagrado ;
+                   rdfs:label "Santuario de Sinakara" .
+
+
+###  http://example.org/festividades#Ukumari
+:Ukumari rdf:type owl:NamedIndividual ,
+                  :PersonajeRitual .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

@@ -1,3 +1,9 @@
+@prefix : <http://example.org/festividades#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
 # Ontología de festividades religiosas andinas en formato Turtle (TTL)
 # Este archivo define clases, propiedades y ejemplos para modelar personajes, danzas, eventos y lugares sagrados
 
@@ -7,11 +13,6 @@
 # 'rdfs' (RDF Schema) permite describir jerarquías de clases y propiedades
 # 'owl' (Web Ontology Language) permite definir ontologías formales, clases, propiedades y restricciones
 # 'xsd' (XML Schema Definition) define tipos de datos como strings, fechas, números, etc.
-@prefix : <http://example.org/festividades#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Esta línea declara formalmente que este documento representa una ontología OWL
 <http://example.org/festividades> rdf:type owl:Ontology .
